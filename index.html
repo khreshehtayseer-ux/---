@@ -1,0 +1,934 @@
+html_content = """<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الامتحان الشامل للفصل الأول - اللغة الإنجليزية (الصف الحادي عشر)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --border-color: #cbd5e1;
+            --success: #16a34a;
+            --danger: #dc2626;
+            --warning: #d97706;
+        }
+
+        * {
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        input, textarea {
+            user-select: text !important;
+            -webkit-user-select: text !important;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+        }
+
+        .en {
+            font-family: 'Poppins', sans-serif;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .u-line {
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .bold-term {
+            font-weight: 800;
+            color: #000000;
+            background-color: #f1f5f9;
+            padding: 1px 5px;
+            border-radius: 4px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+            color: white;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-title h1 {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+
+        .header-title p {
+            margin: 2px 0 0;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+        }
+
+        .teacher-btn {
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .teacher-btn:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Login Card */
+        .card {
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            margin-bottom: 25px;
+        }
+
+        .login-box {
+            max-width: 500px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        .login-box h2 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            margin: 20px 0;
+            text-align: right;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Cairo', sans-serif;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-light);
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            transition: background 0.2s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: #172554;
+        }
+
+        .btn-success {
+            background-color: var(--success);
+        }
+        .btn-success:hover {
+            background-color: #15803d;
+        }
+
+        /* Status Bar */
+        .status-bar {
+            background: #ffffff;
+            border: 2px solid var(--primary-light);
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            position: sticky;
+            top: 76px;
+            z-index: 90;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+
+        .badge {
+            background: #eff6ff;
+            color: var(--primary);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: 1px solid #bfdbfe;
+        }
+
+        .badge-warning {
+            background: #fef3c7;
+            color: #92400e;
+            border-color: #fde68a;
+        }
+
+        /* Questions */
+        .section-header {
+            background: #eff6ff;
+            border-right: 5px solid var(--primary);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 30px 0 20px;
+        }
+
+        .section-header h3 {
+            margin: 0;
+            color: var(--primary);
+            font-size: 1.15rem;
+        }
+
+        .question-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 18px;
+            transition: all 0.2s;
+        }
+
+        .q-text {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 15px;
+        }
+
+        .q-num {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            margin-right: 8px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        @media (max-width: 650px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.15s;
+            font-weight: 500;
+            background: #f8fafc;
+        }
+
+        .option-label:hover {
+            border-color: var(--primary-light);
+            background: #eff6ff;
+        }
+
+        .option-label input[type="radio"] {
+            margin-right: 12px;
+            transform: scale(1.2);
+            accent-color: var(--primary);
+        }
+
+        /* Post-exam Review Styles */
+        .correct-answer-red {
+            border: 2px solid #dc2626 !important;
+            background-color: #fef2f2 !important;
+            color: #dc2626 !important;
+            font-weight: 700 !important;
+        }
+
+        .student-wrong-choice {
+            border: 2px solid #64748b !important;
+            background-color: #f1f5f9 !important;
+            text-decoration: line-through;
+            opacity: 0.8;
+        }
+
+        .correct-feedback-box {
+            margin-top: 12px;
+            padding: 10px 14px;
+            background-color: #fef2f2;
+            border-left: 4px solid #dc2626;
+            color: #dc2626;
+            font-weight: 700;
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+
+        /* Reading Passage */
+        .passage-box {
+            background: #ffffff;
+            border: 2px solid #1e3a8a;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.08);
+        }
+
+        .passage-title {
+            font-weight: 700;
+            color: var(--primary);
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .passage-content {
+            font-size: 1.02rem;
+            line-height: 1.85;
+            color: #1e293b;
+            text-align: justify;
+        }
+
+        .passage-content p {
+            margin-bottom: 15px;
+        }
+
+        /* Modals */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.75);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-box {
+            background: white;
+            border-radius: 14px;
+            max-width: 750px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 28px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            background: #f1f5f9;
+            border: none;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Result Banner */
+        .result-banner {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            color: white;
+            padding: 25px;
+            border-radius: 14px;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+        }
+
+        .score-circle {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: white;
+            color: var(--primary);
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 50px;
+            margin: 10px 0;
+        }
+
+        /* Teacher Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        th {
+            background: #1e3a8a;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .security-rules {
+            background: #fffbeb;
+            border: 1px solid #fcd34d;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: right;
+            font-size: 0.9rem;
+            color: #92400e;
+            margin-bottom: 20px;
+        }
+        .security-rules ul {
+            margin: 8px 0 0;
+            padding-right: 20px;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;" oncopy="return false;" oncut="return false;" onpaste="return false;">
+
+    <!-- Header -->
+    <header>
+        <div class="header-title">
+            <h1>امتحان اللغة الإنجليزية الشامل - الفصل الأول</h1>
+            <p>الصف الحادي عشر | إعداد الأستاذ: محمد تيسير الخرشة</p>
+        </div>
+        <button class="teacher-btn" onclick="openTeacherModal()">
+            <span>🔐 لوحة المعلم</span>
+        </button>
+    </header>
+
+    <!-- Login Screen -->
+    <div id="login-screen" class="container">
+        <div class="card login-box">
+            <h2>بوابة دخول الامتحان الإلكتروني</h2>
+            <p style="color: var(--text-muted);">العلامة الكلية: <strong>100 علامة</strong> (47 سؤالاً)</p>
+            
+            <div class="security-rules">
+                <strong>⚠️ تعليمات هامة ونظام المراقبة الذكي:</strong>
+                <ul>
+                    <li>يُشترط إدخال <strong>الاسم الثلاثي</strong> على الأقل للدخول.</li>
+                    <li>يُمنع مغادرة صفحة الامتحان أو فتح تبويب آخر أو تصغير الشاشة.</li>
+                    <li>عند المحاولة الأولى للخروج سيظهر لك <strong>تحذير أول وأخير</strong>، وفي المرة الثانية سيتم <strong>إنهاء الامتحان وإرسال علامتك تلقائياً</strong>.</li>
+                    <li>يمكنك تسليم الامتحان في أي وقت حتى لو لم تُجب عن جميع الأسئلة.</li>
+                </ul>
+            </div>
+
+            <div class="form-group">
+                <label for="student-name">اسم الطالب الثلاثي (باللغة العربية):</label>
+                <input type="text" id="student-name" class="form-control" placeholder="مثال: أحمد محمد علي الخرشة">
+                <small id="name-error" style="color: var(--danger); display: none; font-weight: bold; margin-top: 5px;">يرجى كتابة الاسم الثلاثي كاملاً (ثلاثة مقاطع على الأقل).</small>
+            </div>
+
+            <button class="btn" onclick="startExam()">ابدأ الامتحان الآن</button>
+        </div>
+    </div>
+
+    <!-- Exam Screen -->
+    <div id="exam-screen" class="container" style="display: none;">
+        <!-- Sticky Status Bar -->
+        <div class="status-bar">
+            <div>
+                <span style="font-weight: 700; color: var(--primary);">الطالب: </span>
+                <span id="display-student-name" style="font-weight: 700;"></span>
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <span class="badge">المُجاب: <span id="answered-count">0</span> / 47</span>
+                <span class="badge badge-warning">الأسئلة المتبقية: <span id="remaining-count">47</span></span>
+            </div>
+        </div>
+
+        <!-- Result Banner (Shown after submission) -->
+        <div id="result-banner" class="result-banner" style="display: none;">
+            <h2 style="margin: 0;">تم تسليم الامتحان بنجاح!</h2>
+            <p id="submission-reason" style="margin: 5px 0; font-size: 0.95rem;"></p>
+            <div class="score-circle"><span id="final-score">0</span> / 100</div>
+            <p style="margin: 5px 0 0; font-size: 0.95rem;">تم إرسال نتيجتك تلقائياً إلى سجل المعلم. راجع إجاباتك أدناه (الإجابة الصحيحة موضحة باللون الأحمر).</p>
+        </div>
+
+        <!-- Question One Header -->
+        <div class="section-header en">
+            <h3>Question Number One: For items (1-40), read each one carefully then choose from A, B, C, or D the correct answer. (80 points — 2 points each)</h3>
+        </div>
+
+        <div id="q1-container" class="en"></div>
+
+        <!-- Question Two Header & Passage -->
+        <div class="section-header en">
+            <h3>Question Number Two: Read the following article carefully, and then answer all the questions that follow. (20 points)</h3>
+        </div>
+
+        <!-- Reading Passage -->
+        <div class="passage-box en">
+            <div class="passage-title">📖 Reading Comprehension Text: Sabriye Tenberken</div>
+            <div class="passage-content">
+                <p>German-born Sabriye Tenberken became blind at the age of 12. Life was not easy for her at her first school. She was desperate to fit in, but other children were often cruel to her and her teachers did not understand her needs. She often tried to hide her blindness until she went to a special boarding school for the blind. Here she realised that blind people were capable of doing the same things as everyone else. The school taught her to come to terms with being blind. She learnt various sports including horse riding and she also learnt how to read Braille. She quickly grew in confidence. She later studied Tibetan at Bonn University. She learnt that many Tibetan people had problems with their eyesight, partly because of <span class="u-line">their</span> diet but mainly because of the damaging sun at high altitudes. There was no Braille in Tibetan, so she decided to write a Tibetan Braille system. At first, she did this to help her with her own studies, but then she realised its potential to help people in the mountainous region of China.</p>
+                <p>She had always wanted to go to Tibet and when she was 26 she decided to pursue her dream and visit the country to introduce her Braille system to local people. Although she travelled with two Tibetans, it was tough for Sabriye to travel around rural parts of Tibet, but that did not put her off. Many people did not believe she was blind because she travelled by horse, and she was shocked to find how blind children were treated. Some were never allowed outside because their parents believed they would hurt themselves. So, she became determined to help them and word was quickly spread about the blind woman who also wanted to set up a school for the blind. Sabriye later met Paul Kronenberg, who became her business partner. Together they set up a school, called Braille Without Borders. It has a vision to help blind children to adjust to their blindness and to learn many of the same skills that she had learnt as a girl. Sabriye realised that blindness has given her the opportunity to help people like herself. Her work has become famous and she was even nominated for the Nobel Peace Prize in 2005. She has also won awards for her work and has also written a book called <em>My Path Leads to Tibet</em> about her life and work.</p>
+            </div>
+        </div>
+
+        <div id="q2-container" class="en"></div>
+
+        <!-- Submit Button -->
+        <div id="submit-section" class="card" style="text-align: center; margin-top: 30px;">
+            <p style="color: var(--text-muted); margin-bottom: 15px;">يمكنك تسليم الامتحان الآن حتى لو لم تقم بالإجابة عن جميع الأسئلة.</p>
+            <button class="btn btn-success" style="max-width: 350px;" onclick="confirmSubmit()">تسليم الامتحان وإرسال النتيجة</button>
+        </div>
+    </div>
+
+    <!-- Warning Modal -->
+    <div id="warning-modal" class="modal-overlay">
+        <div class="modal-box" style="max-width: 450px; text-align: center;">
+            <div style="font-size: 3rem;">⚠️</div>
+            <h2 style="color: var(--danger); margin: 10px 0;">تحذير أمني (المحاولة الأولى)</h2>
+            <p style="font-size: 1.05rem; font-weight: 600;">تم رصد محاولة مغادرة صفحة الامتحان أو تبديل النافذة!</p>
+            <p style="color: var(--text-muted);">هذا هو التنبيه الوحيد. في حال تكرار ذلك مرة أخرى سيتم <strong>إغلاق الامتحان وإرسال علامتك الحالية تلقائياً</strong>.</p>
+            <button class="btn" onclick="closeWarningModal()">فهمت، العودة للامتحان</button>
+        </div>
+    </div>
+
+    <!-- Teacher Dashboard Modal -->
+    <div id="teacher-modal" class="modal-overlay">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeTeacherModal()">×</button>
+            <h2 style="color: var(--primary); margin-top: 0;">🔐 لوحة تحكم المعلم (أ. محمد تيسير الخرشة)</h2>
+            
+            <!-- Login Form -->
+            <div id="teacher-login-view">
+                <p>يرجى إدخال الرقم السري الخاص بالمعلم لعرض سجلات وعلامات الطلاب:</p>
+                <div class="form-group">
+                    <input type="password" id="teacher-pass" class="form-control en" placeholder="Enter Password">
+                    <small id="teacher-error" style="color: var(--danger); display: none; font-weight: bold; margin-top: 5px;">الرقم السري غير صحيح!</small>
+                </div>
+                <button class="btn" onclick="verifyTeacher()">دخول</button>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div id="teacher-dashboard-view" style="display: none;">
+                <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 12px; border-radius: 8px; margin-bottom: 15px; font-size: 0.9rem;">
+                    <strong>ملاحظة الربط السحابي (Google Sheets / Firebase):</strong><br>
+                    النظام مبرمج لإرسال العلامات تلقائياً فور تسليم الطالب. لعرض النتائج من جميع أجهزة الطلاب في مكان واحد، ضع رابط Google Apps Script في متغير <code>GOOGLE_SCRIPT_URL</code> داخل الكود، بالإضافة إلى حفظها محلياً هنا.
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px;">
+                    <h3 style="margin: 0;">سجل علامات الطلاب (<span id="total-students">0</span>)</h3>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="btn btn-success" style="padding: 6px 14px; font-size: 0.85rem; width: auto;" onclick="exportCSV()">📥 تصدير Excel (CSV)</button>
+                        <button class="btn" style="background: var(--danger); padding: 6px 14px; font-size: 0.85rem; width: auto;" onclick="clearRecords()">🗑️ مسح السجل</button>
+                    </div>
+                </div>
+
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>اسم الطالب الثلاثي</th>
+                                <th>العلامة (من 100)</th>
+                                <th>الأسئلة المُجابة</th>
+                                <th>حالة التسليم</th>
+                                <th>وقت التسليم</th>
+                            </tr>
+                        </thead>
+                        <tbody id="students-table-body">
+                            <tr><td colspan="6">لا توجد نتائج مسجلة بعد.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // رابط Google Apps Script لإرسال العلامات تلقائياً إلى Google Sheet الخاص بالمعلم (اختياري)
+        const GOOGLE_SCRIPT_URL = ""; 
+
+        // قاعدة بيانات الأسئلة (40 سؤال موضوعي = 80 علامة + 7 أسئلة قطعة = 20 علامة)
+        const q1Data = [
+            { id: 1, points: 2, text: "Smoke signals is a good way to quickly ........................... that an enemy was coming.", options: ["stay in touch", "spread the message", "convey a message", "make contact"], correct: 2 },
+            { id: 2, points: 2, text: "The <span class='bold-term'>phrasal verb</span> that means <span class='u-line'>to tell someone something you think they don't know</span> is:", options: ["take in", "figure out", "point out", "pick up"], correct: 2 },
+            { id: 3, points: 2, text: "The place is far away I can't <span class='u-line'>see</span>.<br><small>Replace the underlined verb with the correct phrasal verb:</small>", options: ["pick up", "bring about", "make out", "spell out"], correct: 2 },
+            { id: 4, points: 2, text: "The <span class='bold-term'>idiom</span> that means <span class='u-line'>to embarrass someone by forcing them to answer a difficult question</span> is:", options: ["refuse to let something drop", "fire questions at someone", "create a strong bond", "put somebody on the spot"], correct: 3 },
+            { id: 5, points: 2, text: "The <span class='bold-term'>synonym</span> word of the adjective <span class='bold-term'>\"confused\"</span> is:", options: ["thrilled", "astonished", "frightened", "bewildered"], correct: 3 },
+            { id: 6, points: 2, text: "It's sometimes difficult to ........................... a conversation with people you don't know.", options: ["strike up", "real bond", "took to", "hit it off"], correct: 0 },
+            { id: 7, points: 2, text: "Replace the underlined words with the correct phrase.<br>I'm <span class='u-line'>completely fed up with</span> people gossiping behind my back.", options: ["You've got to be kidding me!", "I'm walking on air!", "I can't stop smiling!", "I've had it up to here with"], correct: 3 },
+            { id: 8, points: 2, text: "I ........................... four quizzes and five tests <span class='bold-term'>so far</span> this semester.", options: ["have", "has", "had had", "have had"], correct: 3 },
+            { id: 9, points: 2, text: "I ........................... a break from my screen <span class='bold-term'>from time to time</span> to rest my eyes.", options: ["take", "was taking", "have taken", "takes"], correct: 0 },
+            { id: 10, points: 2, text: "We were walking on the beach ........................... when we found a message in a bottle.", options: ["earlier today", "once in a while", "from time to time", "nowadays"], correct: 0 },
+            { id: 11, points: 2, text: "<span class='bold-term'>Nobody</span> mentioned it before, ........................... ?", options: ["did they", "didn't they", "did he", "didn't he"], correct: 0 },
+            { id: 12, points: 2, text: "She ........................... the piano in an incredible style, <span class='bold-term'>doesn't she</span>?", options: ["played", "plays", "is playing", "has played"], correct: 1 },
+            { id: 13, points: 2, text: "Ali: I go to the library every Thursday.<br>Rana: ........................... ? How is it?", options: ["Did you", "Don't you", "Is it", "Do you"], correct: 3 },
+            { id: 14, points: 2, text: "<span class='bold-term'>By 2050</span>, software ........................... to predict traffic jams.", options: ["will be able", "was able", "is able", "have been able"], correct: 0 },
+            { id: 15, points: 2, text: "We ........................... under the stars <span class='bold-term'>at this time next week</span>.", options: ["are sleeping", "slept", "will be sleeping", "have been sleeping"], correct: 2 },
+            { id: 16, points: 2, text: "With such strong winds, the airport is ........................... to be open.", options: ["unlikely", "sure", "bound", "certain"], correct: 0 },
+            { id: 17, points: 2, text: "Scientists agree that the burning of coal could ........................... global warming.", options: ["due to", "lead to", "as a consequence of", "as a result of"], correct: 1 },
+            { id: 18, points: 2, text: "I like to exercise in the morning, <span class='u-line'>whereas</span> my friend prefers to exercise in the evening.<br><small>The underlined linking word indicates:</small>", options: ["sequencing an argument", "indicating another example", "concluding", "introducing a contrast / topic"], correct: 3 },
+            { id: 19, points: 2, text: "So, let's ........................... a decision on this, shall we?", options: ["make", "do", "grab", "agree"], correct: 0 },
+            { id: 20, points: 2, text: "<span class='u-line'>I'm torn between</span> a new drinking fountain and a plastic recycling bin.<br><small>The underlined phrase indicates:</small>", options: ["Expressing indecision", "Reaching a decision", "Expressing disagreement", "Expressing agreement"], correct: 0 },
+            { id: 21, points: 2, text: "If you start a letter <span class='bold-term'>Dear Sir/Madam</span>, ...........................", options: ["end the letter Yours friendly.", "end the letter Yours faithfully.", "end the letter Yours sincerely.", "end the letter Yours successfully."], correct: 1 },
+            { id: 22, points: 2, text: "She ........................... with her parents <span class='bold-term'>when she was younger</span>.", options: ["is forever arguing", "forever argues", "will forever argue", "was forever arguing"], correct: 3 },
+            { id: 23, points: 2, text: "He's really ........................... ; always telling everyone how great he is.", options: ["passionate", "conceited", "bigoted", "pushy"], correct: 1 },
+            { id: 24, points: 2, text: "There was a wire <span class='u-line'>which attached</span> the phone to the wall. <small>(Participle clause)</small>", options: ["There was a wire attached the phone to the wall.", "There was a wire attaching the phone to the wall.", "There was a wire attach the phone to the wall.", "There was a wire is attached the phone to the wall."], correct: 1 },
+            { id: 25, points: 2, text: "Which of the underlined relative clauses is <span class='bold-term'>defining</span>?", options: ["I had to go into the hall, <span class='u-line'>where the phone was kept</span>, and everyone could hear every word I said.", "My best friend, <span class='u-line'>who I was usually talking to</span>, used to get fed up with me whispering all the time!", "Phones are something <span class='u-line'>that you can keep in your pocket</span>.", "Oliver is adopted by Mr Brownlow, <span class='u-line'>which shows what a kind man he is</span>."], correct: 2 },
+            { id: 26, points: 2, text: "The man ........................... I used to work was always complaining.", options: ["with when", "with who", "with whom", "with where"], correct: 2 },
+            { id: 27, points: 2, text: "Mohammad always empathises ........................... the other characters.", options: ["to", "with", "beside", "of"], correct: 1 },
+            { id: 28, points: 2, text: "Articles published online need to be very brief because everyone has such a short ........................... span these days.", options: ["generates", "attention", "light", "hit"], correct: 1 },
+            { id: 29, points: 2, text: "The articles I write rarely shed much light on the key issues that have ........................... the headlines.", options: ["generates", "attention", "light", "hit"], correct: 3 },
+            { id: 30, points: 2, text: "As well as winning the race, she also broke a world record. <span class='bold-term'>This sentence means:</span>", options: ["Not only she did win the race, but also she broke a world record.", "Not only did she win the race, but also she broke a world record.", "Not only did she won the race, but also she broke a world record.", "Not only did she win the race, but also she break a world record."], correct: 1 },
+            { id: 31, points: 2, text: "They had only just left when the house exploded. <span class='bold-term'>This sentence means:</span>", options: ["Scarcely had they left when the house exploded.", "Scarcely they had left when the house exploded.", "Scarcely had they left when the house explode.", "Scarcely had they only just left when the house exploded."], correct: 0 },
+            { id: 32, points: 2, text: "The developers ........................... a statement about their 'improvement' scheme.", options: ["report", "refuted", "come up with", "released"], correct: 3 },
+            { id: 33, points: 2, text: "Which <span class='bold-term'>suffixes</span> usually change the stress in a word?", options: ["-ment / -ly / -ance", "-ity / -ic / -ion / -al / -ble", "-ly / -er / -ness", "-ful / -less / -ment"], correct: 1 },
+            { id: 34, points: 2, text: "A heavy book dropped on the floor makes a ........................... .", options: ["crunch", "chirp", "sizzle", "thud"], correct: 3 },
+            { id: 35, points: 2, text: "Don't touch the cactus, it's very ........................... .", options: ["silk", "squishy", "smooth", "prickly"], correct: 3 },
+            { id: 36, points: 2, text: "There was only the ........................... of paper during the exam.", options: ["buzzing", "humming", "rustling", "popping"], correct: 2 },
+            { id: 37, points: 2, text: "You're <span class='bold-term'>the second person</span> ........................... me if my hearing is OK today.", options: ["ask", "asking", "to ask", "asked"], correct: 2 },
+            { id: 38, points: 2, text: "<span class='u-line'>It is normal for</span> my brother to wake up early.", options: ["My brother didn't use to wake up early.", "My brother is used to waking up early.", "My brother used to wake up early.", "My brother gets used to waking up early."], correct: 1 },
+            { id: 39, points: 2, text: "Maher played guitar in a jazz band <span class='bold-term'>in the past</span>.", options: ["Maher is used to play guitar in a jazz band.", "Maher used to play guitar in a jazz band.", "Maher use to play guitar in a jazz band.", "Maher used to playing guitar in a jazz band."], correct: 1 },
+            { id: 40, points: 2, text: "I <span class='bold-term'>can't stand</span> ........................... in long queues.", options: ["wait", "waited", "to wait", "waiting"], correct: 3 }
+        ];
+
+        // أسئلة القطعة (7 أسئلة = 20 علامة مطابقة لتوزيع علامات الورقة الامتحانية)
+        const q2Data = [
+            { id: 41, label: "1", points: 3, text: "Why did many Tibetan people have problems with their eyesight? <span class='bold-term'>(3 points)</span>", options: ["Because they did not have special schools for the blind.", "Partly because of their diet, but mainly because of the damaging sun at high altitudes.", "Because they refused to learn how to read Braille.", "Because they lived in rural mountainous regions without doctors."], correct: 1 },
+            { id: 42, label: "2", points: 4, text: "Mention <span class='bold-term'>two skills</span> Sabriye learnt at the special school. <span class='bold-term'>(4 points)</span>", options: ["Speaking Tibetan and writing books.", "Travelling alone and teaching blind children.", "Horse riding (various sports) and reading Braille.", "Building schools and winning international awards."], correct: 2 },
+            { id: 43, label: "3", points: 3, text: "<span class='bold-term'>Quote the sentence</span> which spotlights how other children treated her at her first school. <span class='bold-term'>(3 points)</span>", options: ["\"Life was not easy for her at her first school.\"", "\"German-born Sabriye Tenberken became blind at the age of 12.\"", "\"She often tried to hide her blindness until she went to a special boarding school for the blind.\"", "\"She was desperate to fit in, but other children were often cruel to her and her teachers did not understand her needs.\""], correct: 3 },
+            { id: 44, label: "4", points: 3, text: "What did Sabriye realise when she went to a special boarding school for the blind? <span class='bold-term'>(3 points)</span>", options: ["That blind people were capable of doing the same things as everyone else.", "That she needed to travel to Tibet immediately.", "That there was no Braille system in the Tibetan language.", "That blind children should stay indoors to stay safe."], correct: 0 },
+            { id: 45, label: "5", points: 2, text: "What does the underlined pronoun (<span class='u-line'>their</span>) in the first paragraph refer to? <span class='bold-term'>(2 points)</span>", options: ["Blind children", "Teachers at Bonn University", "Many Tibetan people", "Sabriye's parents"], correct: 2 },
+            { id: 46, label: "6", points: 3, text: "What is the name of the school Sabriye and Paul Kronenberg set up, and what is its vision? <span class='bold-term'>(3 points)</span>", options: ["Bonn Boarding School; to teach horse riding only.", "Braille Without Borders; to help blind children adjust to their blindness and learn skills.", "Tibet Vision School; to cure eyesight problems caused by the sun.", "Path to Tibet; to nominate blind students for the Nobel Peace Prize."], correct: 1 },
+            { id: 47, label: "7", points: 2, text: "Critical Thinking: Do you think one person can really make a difference in society? <span class='bold-term'>(2 points)</span>", options: ["Yes, because determination and innovative ideas like Sabriye's Tibetan Braille can transform thousands of lives.", "No, because individuals cannot change society without large governments.", "No, because disability prevents people from helping others.", "Yes, only if they win the Nobel Peace Prize first."], correct: 0 }
+        ];
+
+        const allQuestions = [...q1Data, ...q2Data];
+        let studentName = "";
+        let examActive = false;
+        let examSubmitted = false;
+        let warningCount = 0;
+
+        // بناء واجهة الأسئلة
+        function renderQuestions() {
+            const q1Container = document.getElementById("q1-container");
+            const q2Container = document.getElementById("q2-container");
+
+            q1Data.forEach((q, idx) => {
+                q1Container.innerHTML += createQuestionHTML(q, idx + 1);
+            });
+
+            q2Data.forEach((q) => {
+                q2Container.innerHTML += createQuestionHTML(q, q.label);
+            });
+        }
+
+        function createQuestionHTML(q, displayNum) {
+            const letters = ["A", "B", "C", "D"];
+            let optionsHTML = q.options.map((opt, i) => `
+                <label class="option-label" id="opt-label-${q.id}-${i}">
+                    <input type="radio" name="q_${q.id}" value="${i}" onchange="updateProgress()">
+                    <span><strong>${letters[i]})</strong> ${opt}</span>
+                </label>
+            `).join("");
+
+            return `
+                <div class="question-card" id="q-card-${q.id}">
+                    <div class="q-text"><span class="q-num">${displayNum}</span> ${q.text}</div>
+                    <div class="options-grid">${optionsHTML}</div>
+                    <div id="feedback-${q.id}" class="correct-feedback-box" style="display: none;"></div>
+                </div>
+            `;
+        }
+
+        // بدء الامتحان
+        function startExam() {
+            const inputName = document.getElementById("student-name").value.trim();
+            const parts = inputName.split(/\s+/).filter(p => p.length > 1);
+            
+            if (parts.length < 3) {
+                document.getElementById("name-error").style.display = "block";
+                return;
+            }
+
+            document.getElementById("name-error").style.display = "none";
+            studentName = inputName;
+            document.getElementById("display-student-name").innerText = studentName;
+
+            renderQuestions();
+            document.getElementById("login-screen").style.display = "none";
+            document.getElementById("exam-screen").style.display = "block";
+            
+            examActive = true;
+            window.scrollTo(0, 0);
+        }
+
+        // تحديث عداد الأسئلة المتبقية والمُجابة
+        function updateProgress() {
+            let answered = 0;
+            allQuestions.forEach(q => {
+                const selected = document.querySelector(`input[name="q_${q.id}"]:checked`);
+                if (selected) answered++;
+            });
+            document.getElementById("answered-count").innerText = answered;
+            document.getElementById("remaining-count").innerText = allQuestions.length - answered;
+        }
+
+        // تأكيد التسليم اليدوي
+        function confirmSubmit() {
+            const remaining = parseInt(document.getElementById("remaining-count").innerText);
+            let msg = "هل أنت متأكد من رغبتك في تسليم الامتحان؟";
+            if (remaining > 0) {
+                msg = `تنبيه: لا يزال لديك (${remaining}) أسئلة لم تقم بالإجابة عنها.\nهل تريد تسليم الامتحان على أي حال؟`;
+            }
+            if (confirm(msg)) {
+                submitExam("تم التسليم يدوياً من قبل الطالب.");
+            }
+        }
+
+        // معالجة التسليم وحساب العلامة وإرسالها تلقائياً
+        function submitExam(reason) {
+            if (examSubmitted) return;
+            examSubmitted = true;
+            examActive = false;
+
+            let totalScore = 0;
+            let answeredCount = 0;
+            const letters = ["A", "B", "C", "D"];
+
+            allQuestions.forEach(q => {
+                const radios = document.querySelectorAll(`input[name="q_${q.id}"]`);
+                let selectedVal = -1;
+
+                radios.forEach(r => {
+                    r.disabled = true;
+                    if (r.checked) {
+                        selectedVal = parseInt(r.value);
+                        answeredCount++;
+                    }
+                });
+
+                // تلوين الإجابة الصحيحة باللون الأحمر كما طُلب
+                const correctLabel = document.getElementById(`opt-label-${q.id}-${q.correct}`);
+                correctLabel.classList.add("correct-answer-red");
+
+                if (selectedVal === q.correct) {
+                    totalScore += q.points;
+                } else {
+                    if (selectedVal !== -1) {
+                        const wrongLabel = document.getElementById(`opt-label-${q.id}-${selectedVal}`);
+                        wrongLabel.classList.add("student-wrong-choice");
+                    }
+                    const fb = document.getElementById(`feedback-${q.id}`);
+                    fb.style.display = "block";
+                    fb.innerHTML = `✔ الإجابة الصحيحة: ${letters[q.correct]}) ${q.options[q.correct]}`;
+                }
+            });
+
+            // عرض النتيجة
+            document.getElementById("submit-section").style.display = "none";
+            document.getElementById("final-score").innerText = totalScore;
+            document.getElementById("submission-reason").innerText = reason;
+            document.getElementById("result-banner").style.display = "block";
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // حفظ وإرسال العلامة تلقائياً للمعلم بدون تحكم الطالب
+            saveAndSendResult({
+                name: studentName,
+                score: totalScore,
+                answered: `${answeredCount} / ${allQuestions.length}`,
+                status: reason,
+                timestamp: new Date().toLocaleString('ar-JO')
+            });
+        }
+
+        function saveAndSendResult(record) {
+            // 1. الحفظ في التخزين المحلي للمتصفح
+            let records = JSON.parse(localStorage.getItem("mk_exam_records_2026") || "[]");
+            records.push(record);
+            localStorage.setItem("mk_exam_records_2026", JSON.stringify(records));
+
+            // 2. الإرسال السحابي التلقائي إذا قام المعلم بوضع رابط Google Script
+            if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.trim() !== "") {
+                fetch(GOOGLE_SCRIPT_URL, {
+                    method: "POST",
+                    mode: "no-cors",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(record)
+                }).catch(err => console.error("Cloud sync error:", err));
+            }
+        }
+
+        // نظام مكافحة الغش (منع الخروج / تبديل التبويب / فقدان التركيز)
+        function handleCheatingAttempt() {
+            if (!examActive || examSubmitted) return;
+
+            warningCount++;
+            if (warningCount === 1) {
+                document.getElementById("warning-modal").style.display = "flex";
+            } else if (warningCount >= 2) {
+                document.getElementById("warning-modal").style.display = "none";
+                submitExam("تم إنهاء الامتحان تلقائياً بسبب تكرار محاولة مغادرة الصفحة (مخالفة أمنية).");
+            }
+        }
+
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                handleCheatingAttempt();
+            }
+        });
+
+        window.addEventListener("blur", () => {
+            handleCheatingAttempt();
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if ((e.ctrlKey || e.metaKey) && ['c', 'v', 'x', 'u', 's', 'p', 'a'].includes(e.key.toLowerCase())) {
+                e.preventDefault();
+            }
+            if (e.key === "F12" || (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i")) {
+                e.preventDefault();
+            }
+        });
+
+        function closeWarningModal() {
+            document.getElementById("warning-modal").style.display = "none";
+        }
+
+        // لوحة تحكم المعلم
+        function openTeacherModal() {
+            document.getElementById("teacher-modal").style.display = "flex";
+            document.getElementById("teacher-pass").value = "";
+            document.getElementById("teacher-error").style.display = "none";
+        }
+
+        function closeTeacherModal() {
+            document.getElementById("teacher-modal").style.display = "none";
+        }
+
+        function verifyTeacher() {
+            const pass = document.getElementById("teacher-pass").value;
+            if (pass === "MK1978mk") {
+                document.getElementById("teacher-login-view").style.display = "none";
+                document.getElementById("teacher-dashboard-view").style.display = "block";
+                loadTeacherRecords();
+            } else {
+                document.getElementById("teacher-error").style.display = "block";
+            }
+        }
+
+        function loadTeacherRecords() {
+            const records = JSON.parse(localStorage.getItem("mk_exam_records_2026") || "[]");
+            document.getElementById("total-students").innerText = records.length;
+            const tbody = document.getElementById("students-table-body");
+
+            if (records.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6">لا توجد نتائج مسجلة بعد.</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = records.map((r, i) => `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td style="font-weight: bold;">${r.name}</td>
+                    <td style="font-weight: 900; color: #1e3a8a;">${r.score} / 100</td>
+                    <td>${r.answered}</td>
+                    <td>${r.status}</td>
+                    <td>${r.timestamp}</td>
+                </tr>
+            `).join("");
+        }
+
+        function exportCSV() {
+            const records = JSON.parse(localStorage.getItem("mk_exam_records_2026") || "[]");
+            if (records.length === 0) {
+                alert("لا توجد بيانات لتصديرها.");
+                return;
+            }
+            let csv = "\uFEFFالرقم,اسم الطالب الثلاثي,العلامة من 100,الأسئلة المجابة,حالة التسليم,وقت التسليم\n";
+            records.forEach((r, i) => {
+                csv += `${i + 1},"${r.name}",${r.score},"${r.answered}","${r.status}","${r.timestamp}"\n`;
+            });
+            const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "نتائج_امتحان_اللغة_الانجليزية_2026.csv";
+            link.click();
+        }
+
+        function clearRecords() {
+            if (confirm("هل أنت متأكد من مسح جميع سجلات الطلاب؟")) {
+                localStorage.removeItem("mk_exam_records_2026");
+                loadTeacherRecords();
+            }
+        }
+    </script>
+</body>
+</html>
+"""
+
+with open("index.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("File generated successfully.")
